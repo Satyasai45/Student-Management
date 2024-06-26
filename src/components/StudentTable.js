@@ -4,7 +4,8 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 import { Edit, Delete } from '@material-ui/icons';
 import StudentForm from './StudentForm';
 import StudentSearch from './StudentSearch';
-import Pagination from '@material-ui/lab/Pagination';
+import Pagination from '@mui/lab/Pagination';
+
 
 const StudentTable = () => {
   const [students, setStudents] = useState([]);
