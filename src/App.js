@@ -9,6 +9,7 @@ const App = () => {
 
   return (
     <ThemeProvider>
+      <h1>Student Management</h1>
       <div className={`App ${theme}`}>
         <ThemeSwitch />
         <StudentTable />

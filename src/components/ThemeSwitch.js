@@ -1,12 +1,17 @@
-import React, { useContext } from 'react';
-import { Switch } from '@material-ui/core';
+import React, { useRef, useContext } from 'react';
+import { Switch } from '@material-ui/core'
 import { ThemeContext } from '../contexts/ThemeContext';
 
 const ThemeSwitch = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
+  const switchRef = useRef(null);
 
   return (
-    <Switch checked={theme === 'dark'} onChange={toggleTheme} />
+    <Switch
+      ref={switchRef} 
+      checked={theme === 'dark'}
+      onChange={toggleTheme}
+    />
   );
 };
 

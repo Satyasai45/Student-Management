@@ -24,7 +24,7 @@ export const addStudent = async (student) => {
 
 export const updateStudent = async (student) => {
   try {
-    const response = await axios.put(`${API_URL}/${student.id}`, student);
+    const response = await axios.put(`https://studentmgmtapi.vercel.app/api/students/${student.id}`, student);
     return response.data;
   } catch (error) {
     console.error("Error updating student:", error);

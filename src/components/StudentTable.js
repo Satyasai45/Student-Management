@@ -4,8 +4,7 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 import { Edit, Delete } from '@material-ui/icons';
 import StudentForm from './StudentForm';
 import StudentSearch from './StudentSearch';
-import Pagination from '@mui/lab/Pagination';
-
+import Pagination from '@mui/material/Pagination'
 
 const StudentTable = () => {
   const [students, setStudents] = useState([]);
@@ -20,8 +19,8 @@ const StudentTable = () => {
 
   const fetchStudents = async (page) => {
     const data = await getStudents(page, 8);
-    setStudents(data.students);
-    setTotalPages(data.totalPages);
+    setStudents(data.students || []);
+    setTotalPages(data.totalPages || 1);
   };
 
   const handleDelete = async (id) => {
@@ -54,7 +53,7 @@ const StudentTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {students.map((student) => (
+            {students.length > 0 ? students.map((student) => (
               <TableRow key={student.id}>
                 <TableCell>{student.firstName}</TableCell>
                 <TableCell>{student.lastName}</TableCell>
@@ -68,7 +67,11 @@ const StudentTable = () => {
                   </IconButton>
                 </TableCell>
               </TableRow>
-            ))}
+            )) : (
+              <TableRow>
+                <TableCell colSpan={4} align="center">No students found</TableCell>
+              </TableRow>
+            )}
           </TableBody>
         </Table>
       </TableContainer>
